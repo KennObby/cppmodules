@@ -10,23 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstddef>
-#include <cstdlib>
-#include <ios>
+#include <cctype>
+#include <cstring>
 #include <iostream>
+#include <ostream>
 
-int main()
+int main(int ac, char **av)
 {
-	const size_t SIZE = 1024;
-	char*	test = (char *)malloc(SIZE);
-
-	if (!test)
+	
+	if (ac < 2)
 	{
-		std::cerr << "Failing allocating memory";
-		return (1);
+		std::cerr << "* LOUD AND UNBERABLE FEEDBACK NOISE *";
 	}
-	std::cout << "Type something: ";
-	std::cin.getline(test, SIZE);
-	std::cout << std::uppercase << test << "\n";
+	for (int i = 1; i < ac ; i++)
+	{
+		for (size_t j = 0; j < strlen(av[i]); j++)
+		{
+			std::cout << (char)toupper(av[i][j]);
+		}
+		if (i < ac - 1)
+			std::cout << " ";
+	}
+	std::cout << "\n";
 	return (0);
 }
