@@ -15,6 +15,9 @@
 #include <iostream>
 #include <ostream>
 
+/*
+ * DOCS: https://en.cppreference.com/w/cpp/language/static_cast 
+ */
 int main(int ac, char **av)
 {
 	
