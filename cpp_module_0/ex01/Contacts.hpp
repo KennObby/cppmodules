@@ -9,17 +9,19 @@
 /*   Updated: 2025/04/10 17:20:29 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef CONTACTS_HPP
+# define CONTACTS_HPP
 
-#include "Phonebook.hpp"
 #include <string>
 /*
  * So basically the behaviour of defining a class in .hpp
- * results by defining prototypes functions, accesories(getters) 
- * and setters on public and variables on private (only ? We will se later)
+ * results by defining prototypes functions, accessories(getters) 
+ * and setters on public and variables on private (only ? We will see later..)
  */
 class Contacts
 {
-	Contacts();
+	public:
+		Contacts();
 
 	private:
 		std::string	first_name;
@@ -28,3 +30,5 @@ class Contacts
 		std::string	phone_number;
 		std::string	darkest_secret;
 }
+
+#endif

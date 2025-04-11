@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Contacts.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 16:35:01 by oilyine-          #+#    #+#             */
-/*   Updated: 2025/04/10 16:36:58 by oilyine-         ###   ########.fr       */
+/*   Created: 2025/04/11 10:56:34 by oilyine-          #+#    #+#             */
+/*   Updated: 2025/04/11 10:56:49 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
 
 #include "Contacts.hpp"
 
-class Phonebook
-{
-	public:
-		Phonebook();
-		void	add_contacts();
-		void	search_contacts();
-		void	exit_phonebook();
-
-	private:
-		static const int MAX_CONTACTS = 8;
-		Contacts contacts[MAX_CONTACTS];
-		int	contact_counter;
-}
+Contacts::Contacts()
+	: first_name(""), last_name(""), nickname(""),
+	  phone_number(""), darkest_secret("") {}
