@@ -1,6 +1,9 @@
 NAME = phonebook
 
-SRCS = phonebook.cpp
+SRCS = 	Phonebook.cpp 	\
+	    Contacts.cpp 	\
+		main.cpp 
+
 OBJS = ${SRCS:.cpp=.o}
 CXX = c++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror
@@ -9,7 +12,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "Compiling..."
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	@echo "cleaning objects"
@@ -21,5 +24,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-

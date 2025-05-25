@@ -13,6 +13,7 @@
 #define PHONEBOOK_HPP
 
 #include "Contacts.hpp"
+#include <string>
 
 class Phonebook
 {
@@ -22,8 +23,12 @@ class Phonebook
 		void	search_contacts();
 		void	exit_phonebook();
 
+		std::string	formatField(const std::string& field);
+
 	private:
 		static const int MAX_CONTACTS = 8;
 		Contacts contacts[MAX_CONTACTS];
 		int	contact_counter;
-}
+};
+
+#endif
