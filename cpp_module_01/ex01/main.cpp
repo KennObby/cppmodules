@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oilyine- <oleg.ilyine@student42.luxembour  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 19:14:48 by oilyine-          #+#    #+#             */
-/*   Updated: 2025/05/31 23:08:40 by oilyine-         ###   ########.fr       */
+/*   Created: 2025/07/16 21:23:51 by oilyine-          #+#    #+#             */
+/*   Updated: 2025/07/16 21:32:02 by oilyine-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "Zombie.hpp"
 
-#include <string>
-#include <iostream>
+int	main(void)
+{
+	Zombie	*horde;
+	int		zombieNbr = 10;
 
-class Zombie{
-
-	private: 
-		std::string _name;
-		
-	public:
-		Zombie(std::string name);
-		~Zombie(void);
-		void	announce(void);
-};
-
-#endif
+	horde = zombieHorde(zombieNbr, "Horde Gang");
+	if (horde == NULL)
+		return (1);
+	for (int i = 0; i < zombieNbr ; ++i) {
+		horde[i].announce();
+	}
+	delete[] horde;
+	return (0);
+}

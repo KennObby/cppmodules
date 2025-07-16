@@ -10,12 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
+NAME = zombieHorde
 OBJSDIR = obj
 SRCS = Zombie.cpp \
        main.cpp \
-       newZombie.cpp \
-       randomChump.cpp
+       ZombieHorde.cpp \
 
 OBJS = $(addprefix $(OBJSDIR)/, $(notdir $(SRCS:.cpp=.o)))
 
