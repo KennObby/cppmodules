@@ -13,14 +13,15 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-#include <cfloat>
+# include <cfloat>
+# include <iostream>
 
 class Fixed {
 public:
 	Fixed();
 	Fixed(const Fixed &other);
-	Fixed(const int &other);
-	Fixed(const float &other);
+	Fixed(int other);
+	Fixed(float other);
 	Fixed &operator=(const Fixed &);
 	~Fixed();
 	float	toFloat( void ) const;
@@ -32,5 +33,7 @@ private:
 	int 				_value;
 	static const int	_fract;
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &value);
 
 #endif
