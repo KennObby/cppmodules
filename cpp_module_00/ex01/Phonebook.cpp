@@ -22,6 +22,10 @@
 
 Phonebook::Phonebook() : contact_counter(0) {}
 
+bool	Phonebook::is_empty_field(const std::string& field) const {
+	return field.empty();
+}
+
 void	Phonebook::add_contacts() {
 	
 	std::string input;
@@ -52,6 +56,15 @@ void	Phonebook::add_contacts() {
 	std::getline(std::cin, input);
 	new_contact.SetDarkestSecret(input);
 
+	if (is_empty_field(new_contact.getFirstName()) ||
+		is_empty_field(new_contact.getLastName()) || 
+		is_empty_field(new_contact.getNickName()) ||
+		is_empty_field(new_contact.getDarkestSecret()) ||
+		is_empty_field(new_contact.getDarkestSecret())) {
+
+		std::cout << "Error: All fields must be filled. Contact not saved \n";
+		return ;
+	}
 	std::cout << "\n";
 	contacts[contact_counter % MAX_CONTACTS] = new_contact;
 	contact_counter++;
@@ -73,13 +86,18 @@ void	Phonebook::search_contacts() {
 									? contact_counter : MAX_CONTACTS;
 	bool				is_digit = true;
 
-	std::cout << "|	Index |First Name| Last Name| Nickname |\n";
+	std::cout << "|"
+			  << std::setw(10) << "Index" << "|"
+			  << std::setw(10) << "First Name" << "|"
+			  << std::setw(10) << "Last Name" << "|"
+			  << std::setw(10) << "Nickname" << "|"
+			  << std::endl;
 	for (int i = 0; i < displayed; i++) {
 		std::cout << "|"
 				  << std::setw(10) << i << "|"
 				  << formatField(contacts[i].getFirstName()) << "|"
 				  << formatField(contacts[i].getLastName()) << "|"
-				  << formatField(contacts[i].getNickName()) << "|\n";
+				  << formatField(contacts[i].getNickName()) << std::endl;
 	}
 
 	std::cout << "Enter index to view contact: ";

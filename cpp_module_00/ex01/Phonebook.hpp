@@ -24,7 +24,7 @@ class Phonebook
 		void	exit_phonebook();
 
 		std::string	formatField(const std::string& field);
-
+		bool		is_empty_field(const std::string& field) const;
 	private:
 		static const int MAX_CONTACTS = 8;
 		Contacts contacts[MAX_CONTACTS];
