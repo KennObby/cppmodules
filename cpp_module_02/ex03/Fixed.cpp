@@ -95,7 +95,6 @@ Fixed &Fixed::operator++() {
 	_value++;
 	return (*this);
 }
-
 Fixed Fixed::operator++(int) {
 	Fixed tmp(*this);
 	_value++;
@@ -115,7 +114,7 @@ Fixed Fixed::operator--(int) {
 
 Fixed::~Fixed() {}
 
-int	Fixed::getRawBits( void ) const {
+int	Fixed::getRawBits( void ) const{
 	return _value;
 }
 
