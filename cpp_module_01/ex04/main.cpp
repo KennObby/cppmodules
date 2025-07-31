@@ -39,12 +39,12 @@ void	process_file(std::string filename, std::string s1, std::string s2) {
 	std::ifstream input_file(filename.c_str(), std::ios::binary);
 	if (!input_file) {
 		std::cout << "Error: cannot open input file" << std::endl;
-		exit(1);
+		return ;
 	}
 	std::ofstream output_file((filename + ".replace").c_str(), std::ios::binary);
 	if (!output_file) {
 		std::cout << "Error: cannot create output file" << std::endl;
-		exit(1);
+		return ;
 	}
 	while (std::getline(input_file, line)) {
 		std::string replaced_line = custom_replace(line, s1, s2);
