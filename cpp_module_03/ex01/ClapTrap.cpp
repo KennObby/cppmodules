@@ -27,7 +27,7 @@ ClapTrap::ClapTrap(const std::string& name, int hp, int en, int dm)
 };
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap destroyed" << std::endl;
+	std::cout << "ClapTrap( " << _name << " ) got destroyed" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) 
@@ -45,6 +45,8 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
 	this->_attack_dmg = other._attack_dmg;
 	return (*this);
 }
+
+const char* ClapTrap::role() const { return "ClapTrap"; }
 
 void	ClapTrap::attack(const std::string& target) {
 	if (this->_energy_points <= 0) {
@@ -64,7 +66,7 @@ void	ClapTrap::attack(const std::string& target) {
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_energy_points <= 0) {
-		std::cout << "ClapTrap " << this->_name
+		std::cout << role() << " " << this->_name
 		<< " has no more energy points! leaving..." << std::endl;
 		return ;
 	}
@@ -73,8 +75,10 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		<< " has no more hit points! leaving..." << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap" << this->_name << " took " << this->_attack_dmg << " dmg." << std::endl;
-	this->_hit_points -= (int)amount;
+	int dmg = static_cast<int>(amount);
+	this->_hit_points = (this->_hit_points > dmg) ? (this->_hit_points - dmg) : 0;
+	std::cout << role() << this->_name << " took " << this->_attack_dmg << " dmg."
+	<< " HP now " << this->_hit_points << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
@@ -83,6 +87,6 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		<< " has reach max energy points! leaving... " << std::endl;
 		return ;
 	}
-	this->_hit_points += (int)amount;
+	this->_hit_points += static_cast<int>(amount);
 	this->_energy_points--;
 }

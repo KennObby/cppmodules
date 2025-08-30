@@ -10,32 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
-#include <string>
+#include "ScavTrap.hpp"   // includes ClapTrap.hpp internally
 #include <iostream>
+#include <string>
+
+static void section(const char* title) {
+    std::cout << "\n--- " << title << " ---\n";
+}
 
 int main() {
-	std::cout << "\n --- Creating ClapTraps --- \n";
-	ClapTrap	Bilal("Alpha", 10, 1, 1);
-	ClapTrap	Deby("Bravo", 10, 1, 1);
-	ClapTrap	Melvin("Charlie", 10, 1, 1);
+    section("Creating ClapTraps");
+    ClapTrap Bilal("Alpha", 10, 1, 1);
+    ClapTrap Deby ("Bravo", 10, 1, 1);
+    ClapTrap Melvin("Charlie", 10, 1, 1);
 
+    section("Creating ScavTraps");
+    ScavTrap Oleg ("Lego");
+    ScavTrap Le_J ("Julius");
+    ScavTrap Eliot("Orvalius");
 
-	std::cout << "\n --- Creating ScavTraps ---\n";
-	ScavTrap	Oleg("Lego");
-	ScavTrap	Le_J("Julius");
-	ScavTrap	Eliot("Orvalius");
+    section("Basic attacks");
+    Oleg.attack("Orvalius");
+    Le_J.attack("Lego");
+    Eliot.attack("Julius");
+    Bilal.attack("Bravo");
+    Deby.attack("Charlie");
 
-	std::cout << "\n --- Testing attacks ---\n";
-	for (int i = 0; i < 120; i++) {
-		Oleg.attack("Orvalius");
-		Le_J.attack("Lego");
-		Eliot.attack("Julius");
-	}
-	for (int i = 0; i < 11; i++) {
-		Bilal.attack("Bravo");
-		Deby.attack("Charlie");
-	}
-	//std::cout << "\n--- Testing takeDamage ---\n";
+    section("Damage & repair demo");
+    Eliot.takeDamage(30);
+    Eliot.beRepaired(10);
+    Eliot.takeDamage(100);
+
+    section("Gate keeper mode");
+    Le_J.guardGate();
+
+    section("Energy drain (short)");
+    for (int i = 0; i < 55; ++i)
+        Oleg.attack("Training dummy");
+
+    section("Polymorphic calls via base pointer");
+    ClapTrap* party[3];
+    party[0] = &Bilal;
+    party[1] = &Le_J;
+    party[2] = &Melvin;
+    for (int i = 0; i < 3; ++i)
+        party[i]->attack("poly-target");
+    section("Done");
+    return 0;
 }

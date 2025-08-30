@@ -24,10 +24,8 @@ class ScavTrap : public ClapTrap  {
 
 		ScavTrap& operator=(const ScavTrap& other);
 		
-		void attack(const std::string& target);
-		void beRepaired(const unsigned int amount);
-		void takeDamage(const unsigned int amount); 
-		void guardGate();
+		virtual void	attack(const std::string& target);
+		void 			guardGate();
 };
 
 #endif

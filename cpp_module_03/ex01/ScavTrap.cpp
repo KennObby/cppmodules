@@ -32,9 +32,7 @@ ScavTrap::~ScavTrap() {
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
-	if (this != &other) {
-		ClapTrap::operator=(other);
-	}
+	if (this != &other) ClapTrap::operator=(other);
 	return *this;
 }
 
@@ -47,19 +45,10 @@ void	ScavTrap::attack(const std::string& target) {
 		std::cout << "ScavTrap" << getName() << "has no HP! " << std::endl;
 		return ;
 	}
-	std::cout << "ScavTrap " << getName() << " slashes " << target
-			  << " for " << getAttackDamage() << " damage. " << std::endl;
+	std::cout << "ScavTrap " << getName() << " winds up a heavy strike! " << std::endl;
 	ClapTrap::attack(target);
 }
 
-void	ScavTrap::beRepaired(const unsigned int amount) {
-	if (getHitPoints() <= 0) {
-		std::cout << "ScavTrap " << getName() << " has no HP! " << std::endl;
-		return ;
-	}
-	ClapTrap::beRepaired(amount);
-}
-
-void	ScavTrap::takeDamage(const unsigned int amount) {
-	ClapTrap::takeDamage(amount);
+void	ScavTrap::guardGate() {
+	std::cout << "ScavTrap " << getName() << "is now in Gate Keeper mode. " << std::endl;
 }
